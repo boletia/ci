@@ -1,11 +1,22 @@
 pipeline {
-  agent { docker 'ruby:2.3' }
+  agent { 
+    label 'ci'
+    docker 'debian:stable'
+  }
   stages {
-    stage('build') {
+    stage('Pre Build') {
       steps {
-        sh 'ruby --version'
-        sh 'bundle install'
+        sh "gem install bundler --no-rdoc --no-ri"
+        sh "bundle install"
       }
+    }
+    stage('Build') {
+      steps {
+      }
+    }
+    stage('Test') {        
+    }
+    stage('Deploy') {
     }
   }
 }
