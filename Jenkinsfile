@@ -7,8 +7,8 @@ pipeline {
         stage('Pre Build') { 
             steps { 
                 sh '''
-                docker run -ti airdock/rvm /bin/bash -l -c "ruby --version"
-                '''
+                ruby --version
+               '''
             }
         }
         stage('Test'){
