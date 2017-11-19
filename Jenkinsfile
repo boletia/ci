@@ -16,14 +16,6 @@ pipeline {
                 pwd
                 ls /
                 ls /home
-                mkdir /usr/src/app
-                cd /usr/src/app
-                rvm version
-                whoami
-                gem install rails
-                rails new ciapp --database=postgresql; cd ciapp
-                gem install bundler --no-rdoc --no-ri
-                bundle install
                '''
             }
         }
