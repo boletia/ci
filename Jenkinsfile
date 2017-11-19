@@ -1,18 +1,13 @@
 pipeline {
     agent {
-        docker 'tzenderman/docker-rvm'
+        docker 'airdock/rvm'
     }
    
     stages {
         stage('Pre Build') { 
             steps { 
                 sh '''
-                rvm version
-                gem install rails
-                rails new ciapp --database=postgresql; cd ciapp
-                gem install bundler --no-rdoc --no-ri
-                bundle install'
-                rvm gemset list
+                docker run -ti airdock/rvm /bin/bash -l -c "ruby --version"
                 '''
             }
         }
