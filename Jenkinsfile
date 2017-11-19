@@ -12,20 +12,14 @@ pipeline {
                 uname -a
                 export
                 ruby --version
+                mkdir /usr/src/app
+                cd /usr/src/app
                 rvm version
                 whoami
-                rvm install ruby-2.3.4
-                rvm list
-                rvm gemset list
-                rvm --default use ruby-2.3.4
-                rvm gemset create ci
-                rvm gemset use ci
-                rvm gemset list
                 gem install rails
                 rails new ciapp --database=postgresql; cd ciapp
                 gem install bundler --no-rdoc --no-ri
-                bundle install'
-                rvm gemset list
+                bundle install
                '''
             }
         }
