@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker 'instructure/rvm'
+        docker ' tzenderman/docker-rvm'
     }
    
     stages {
