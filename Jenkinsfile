@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker 'debian:stable'
+        docker 'debian:jessie'
     }
    
     stages {
@@ -8,6 +8,7 @@ pipeline {
             steps { 
                 sh '''
                 #!/bin/bash -x
+                lsb_release -a
                 whoami
                 uname -a
                 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
