@@ -13,6 +13,7 @@ pipeline {
                 rvm version
                 rvm list
                 rvm list known
+                cat /etc/rvmrc
                 rvm install ruby-2.1
                 rvm gemset list
                 rvm --default use ruby-2.3.4
