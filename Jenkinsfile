@@ -4,7 +4,7 @@ pipeline {
     docker 'debian:stable'
   }
   stages {
-    stage('PreBuild') {
+    stage('Build') {
       steps {
         sh "gem install bundler --no-rdoc --no-ri"
         sh "bundle install"
