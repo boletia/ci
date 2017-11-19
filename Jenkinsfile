@@ -15,6 +15,7 @@ pipeline {
                 cd
                 pwd
                 ls /
+                sudo -s
                 useradd admin -s /bin/bash
                 ls /home
                '''
