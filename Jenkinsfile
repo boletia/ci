@@ -1,12 +1,14 @@
 pipeline {
-    agent {
-        docker 'cyberious/docker-jenkins-rvm'
+  agent {
+    dockerfile {
+      filename 'Dockerfile'
     }
-   
-    stages {
-        stage('Pre Build') { 
-            steps { 
-                sh '''
+    
+  }
+  stages {
+    stage('Pre Build') {
+      steps {
+        sh '''
                 #!/bin/bash -x
                 dpkg -l
                 uname -a
@@ -23,20 +25,20 @@ pipeline {
                 gem install rails
                 rails new ciapp --database=postgresql; cd ciapp
                 gem install bundler --no-rdoc --no-ri
-                bundle install'
+                bundle install\'
                 rvm gemset list
                '''
-            }
-        }
-        stage('Test'){
-            steps {
-                sh 'echo "Test"'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo "Deploy"'
-            }
-        }
+      }
     }
+    stage('Test') {
+      steps {
+        sh 'echo "Test"'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploy"'
+      }
+    }
+  }
 }
