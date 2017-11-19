@@ -6,7 +6,6 @@ pipeline {
                 sh '''
                 ls /home
                 \curl -sSL https://get.rvm.io | bash -s stable --rails
-                rvm --help
                 '''
             }
         }
