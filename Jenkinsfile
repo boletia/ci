@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh '''
                 ls /home
+                echo $USER
                 '''
             }
         }
