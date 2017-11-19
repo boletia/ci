@@ -1,10 +1,6 @@
 pipeline {
     agent any 
-    agent { 
-        label 'ci'
-        docker 'debian:stable'
-    }
-
+   
     stages {
         stage('Pre Build') { 
             steps { 
