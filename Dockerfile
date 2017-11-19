@@ -5,15 +5,13 @@ FROM ruby:2.3.3
 RUN apt-get update -qq
 RUN apt-get install -y -qq  postgresql-client-9.4 && apt-get clean
 
-RUN useradd -m -s /bin/bash app
+RUN useradd -m -s /bin/bash admin
 USER admin
 WORKDIR /home/admin
 
 # Declare the env vars for the working path
 ENV APP_HOME /home/admin/app
 
-RUN echo $HOME
-USER app
 RUN echo $HOME
 
 ADD . $APP_HOME/
