@@ -8,6 +8,11 @@ pipeline {
             steps { 
                 sh '''
                 rvm version
+                gem install rails
+                rails new ciapp --database=postgresql; cd ciapp
+                gem install bundler --no-rdoc --no-ri
+                bundle install'
+                rvm gemset list
                 '''
             }
         }
