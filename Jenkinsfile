@@ -1,9 +1,16 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Pre Build'){
+        stage('Pre Build') { 
             steps {
-                sh 'echo "Pre Build"'
+                sh '''
+                ls /home
+                '''
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'echo "Test"'
             }
         }
         stage('Deploy') {
