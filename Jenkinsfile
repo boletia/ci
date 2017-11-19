@@ -1,8 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
+  agent docker 'ruby:2.3.3'
     
   }
   stages {
