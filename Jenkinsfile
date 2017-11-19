@@ -14,6 +14,8 @@ pipeline {
                 ruby --version
                 cd
                 pwd
+                ls /
+                ls /home
                 mkdir /usr/src/app
                 cd /usr/src/app
                 rvm version
