@@ -16,5 +16,4 @@ ENV APP_HOME /home/admin/app
 
 ADD . $APP_HOME/
 
-RUN curl -L https://get.rvm.io
-RUN /bin/bash -s stable
+RUN curl -L https://get.rvm.io | /bin/bash -s stable
