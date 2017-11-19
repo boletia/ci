@@ -12,6 +12,8 @@ pipeline {
                 uname -a
                 export
                 ruby --version
+                cd
+                pwd
                 mkdir /usr/src/app
                 cd /usr/src/app
                 rvm version
