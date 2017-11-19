@@ -7,3 +7,9 @@ RUN apt-get install -y -qq  postgresql-client-9.4 && apt-get clean
 
 USER admin
 WORKDIR /home/admin
+
+# Declare the env vars for the working path
+ENV APP_HOME /home/admin/app
+
+ADD . $APP_HOME/
+RUN bundle
