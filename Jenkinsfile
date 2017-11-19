@@ -6,11 +6,13 @@ pipeline {
     stages {
         stage('Pre Build') { 
             steps { 
-                sh 'rvm gemset list'
-                sh 'gem install rails'
-                sh 'rails new ciapp --database=postgresql; cd ciapp'
-                sh 'gem install bundler --no-rdoc --no-ri'
-                sh 'bundle install'
+                sh '''
+                gem install rails
+                rails new ciapp --database=postgresql; cd ciapp
+                gem install bundler --no-rdoc --no-ri
+                bundle install'
+                rvm gemset list
+                '''
             }
         }
         stage('Test'){
