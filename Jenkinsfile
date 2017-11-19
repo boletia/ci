@@ -11,9 +11,10 @@ pipeline {
                 dpkg -l
                 uname -a
                 rvm version
+                rvm install ruby-2.3.4
                 rvm list
                 rvm gemset list
-                rvm --default use 2.3.4
+                rvm --default use ruby-2.3.4
                 rvm gemset create ci
                 rvm gemset use ci
                 rvm gemset list
