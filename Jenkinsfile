@@ -12,7 +12,7 @@ pipeline {
                 uname -a
                 rvm version
                 rvm list
-                rvm rubies
+                rvm list known
                 rvm gemset list
                 rvm --default use ruby-2.3.4
                 rvm gemset create ci
