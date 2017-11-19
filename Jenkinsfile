@@ -7,6 +7,7 @@ pipeline {
         stage('Pre Build') { 
             steps { 
                 sh '''
+                . $(/home/RVM_USER/.rvm/bin/rvm env 2.3.4 --path)
                 uname -a
                 rvm version
                 rvm list
