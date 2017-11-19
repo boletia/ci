@@ -1,13 +1,12 @@
 pipeline {
     agent {
-        docker 'airdock/rvm'
+        docker 'debian:stable'
     }
    
     stages {
         stage('Pre Build') { 
             steps { 
                 sh '''
-                . $(/home/RVM_USER/.rvm/bin/rvm env ruby-2.3.4 --path)
                 uname -a
                 rvm version
                 rvm list
