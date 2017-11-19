@@ -7,6 +7,7 @@ pipeline {
         stage('Pre Build') { 
             steps { 
                 sh '''
+                apt-get install rubygems build-essential
                 uname -a
                 rvm version
                 rvm list
