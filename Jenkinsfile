@@ -1,9 +1,29 @@
 pipeline {
-    agent { docker 'ruby' }
+    agent {
+        docker 'instructure/rvm'
+    }
+   
     stages {
-        stage('build') {
+        stage('Pre Build') { 
+            steps { 
+                sh '''
+                ruby --version
+                gem install rails
+                rails new ciapp --database=postgresql; cd ciapp
+                gem install bundler --no-rdoc --no-ri
+                bundle install'
+                rvm gemset list
+                '''
+            }
+        }
+        stage('Test'){
             steps {
-                sh 'ruby --version'
+                sh 'echo "Test"'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploy"'
             }
         }
     }
