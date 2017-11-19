@@ -1,8 +1,12 @@
 pipeline {
     agent any 
+    agent { 
+        label 'ci'
+        docker 'debian:stable'
+    }
 
     stages {
-        stage('Build') { 
+        stage('Pre Build') { 
             steps { 
                 sh 'gem install bundler --no-rdoc --no-ri'
                 sh 'bundle install'
