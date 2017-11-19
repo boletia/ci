@@ -12,4 +12,3 @@ WORKDIR /home/admin
 ENV APP_HOME /home/admin/app
 
 ADD . $APP_HOME/
-RUN bundle
