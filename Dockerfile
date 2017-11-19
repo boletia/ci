@@ -5,6 +5,8 @@ FROM ruby:2.3.3
 RUN apt-get update -qq
 RUN apt-get install -y -qq  postgresql-client-9.4 && apt-get clean
 
+
+#Admin user for operations tasks
 RUN useradd -m -s /bin/bash admin
 USER admin
 WORKDIR /home/admin
@@ -12,8 +14,6 @@ WORKDIR /home/admin
 # Declare the env vars for the working path
 ENV APP_HOME /home/admin/app
 
-RUN echo $HOME
-
 ADD . $APP_HOME/
-RUN gpg --help
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN \curl -sSL https://get.rvm.io | bash -s stable --rails
