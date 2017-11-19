@@ -8,7 +8,8 @@ pipeline {
             steps { 
                 sh '''
                 uname -a
-                sudo apt-get install rubygems build-essential
+                whoami
+                apt-get install rubygems build-essential
                 rvm version
                 rvm list
                 rvm gemset list
