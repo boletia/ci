@@ -11,9 +11,8 @@ pipeline {
                 rvm version
                 rvm list
                 rvm gemset list
-                rvm gemset list
-                rvm install ruby-2.3.3
                 rvm gemset --create use ruby-2.3.4@ci
+                rvm gemset list
                 gem install rails
                 rails new ciapp --database=postgresql; cd ciapp
                 gem install bundler --no-rdoc --no-ri
