@@ -10,7 +10,7 @@ pipeline {
                 #!/bin/bash -x
                 dpkg -l
                 uname -a
-                gpg
+                export
                 rvm version
                 whoami
                 rvm install ruby-2.3.4
