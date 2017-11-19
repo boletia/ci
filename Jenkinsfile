@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'echo "Build"' 
+                sh 'gem install bundler --no-rdoc --no-ri'
+                sh 'bundle install'
             }
         }
         stage('Test'){
