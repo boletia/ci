@@ -6,6 +6,7 @@ pipeline {
                 sh '''
                 ls /home
                 echo $USER
+                gpg --help
                 '''
             }
         }
