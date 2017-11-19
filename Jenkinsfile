@@ -1,5 +1,7 @@
 pipeline {
-    agent 'docker:debian'
+    agent {
+        docker 'debian:stable'
+    }
    
     stages {
         stage('Pre Build') { 
