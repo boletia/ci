@@ -1,5 +1,7 @@
 pipeline {
-  agent docker 'ruby:2.3.3'
+  agent {
+    docker 'ruby:2.3.3'
+  }
     
   }
   stages {
