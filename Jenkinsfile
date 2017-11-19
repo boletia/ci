@@ -10,13 +10,5 @@ pipeline {
         sh "bundle install"
       }
     }
-    stage('Build') {
-      steps {
-      }
-    }
-    stage('Test') {        
-    }
-    stage('Deploy') {
-    }
   }
 }
