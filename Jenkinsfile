@@ -7,6 +7,9 @@ pipeline {
         stage('Pre Build') { 
             steps { 
                 sh '''
+                echo $USER
+                sudo groupadd docker
+                sudo gpasswd -a $USER docker
                 #!/bin/bash -x
                 dpkg -l
                 uname -a
