@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker 'ruby'
+    docker 'ahdinosaur/debian-rvm'
   }
   
   }
