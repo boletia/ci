@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker 'ahdinosaur/debian-rvm'
+        docker 'cyberious/docker-jenkins-rvm'
     }
    
     stages {
