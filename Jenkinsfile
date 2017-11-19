@@ -11,6 +11,7 @@ pipeline {
                 dpkg -l
                 uname -a
                 export
+                ruby --version
                 rvm version
                 whoami
                 rvm install ruby-2.3.4
