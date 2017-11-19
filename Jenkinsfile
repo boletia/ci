@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker ' tzenderman/docker-rvm'
+        docker 'tzenderman/docker-rvm'
     }
    
     stages {
