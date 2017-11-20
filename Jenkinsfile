@@ -4,13 +4,13 @@ pipeline {
         stage('Build') { 
             steps {
                 sh '''
-                echo "Build"
+                bundle install
                 '''
             }
         }
         stage('Test'){
             steps {
-                sh 'echo "Test"'
+                sh 'rspec spec'
             }
         }
         stage('Deploy') {
