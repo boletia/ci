@@ -22,6 +22,7 @@ RUN chown -R admin:admin /home/admin/app
 
 USER admin
 
-RUN id
+RUN id && \
     gem install bundler && \
+    bundle install && \
     echo "Container Done!"
