@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {   
-                sh 'whoami'
+                sh 'su - admin'
                 sh 'bundle update rack-test && bundle install'
             }
         }
