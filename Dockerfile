@@ -24,5 +24,6 @@ USER admin
 
 RUN id && \
     gem install bundler && \
+    bundle update rack-test && \
     bundle install && \
     echo "Container Done!"
