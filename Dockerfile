@@ -6,6 +6,7 @@ RUN apt-get update -qq
 RUN apt-get install -y curl gnupg build-essential gawk sqlite3 libgmp-dev libgdbm-dev bison libgmp-dev
 
 
+ENV HOME /home/admin
 ENV APP_HOME /home/admin/app
 
 #Admin user for operations tasks
