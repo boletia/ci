@@ -4,6 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh '''
+                bundle update rack-test
                 bundle install
                 '''
             }
