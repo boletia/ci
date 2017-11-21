@@ -25,4 +25,3 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
     curl -L https://get.rvm.io | /bin/bash -s stable && \
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && \
     $HOME/.rvm/bin/rvm install ruby-2.3.3 && cd $APP_HOME && $HOME/.rvm/bin/rvm gemset list && gem install bundler && \
-    bundle update rack-test && bundle install
