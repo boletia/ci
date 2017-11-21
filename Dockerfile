@@ -12,8 +12,7 @@ ENV APP_HOME /home/admin/app
 #Admin user for operations tasks
 RUN groupadd admin && \
     useradd -ms /bin/bash admin -g admin && \
-    mkdir -p $APP_HOME && \
-    rm -rf /usr/local/bundle/cache
+    mkdir -p $APP_HOME
 
 # Declare the env vars for the working path
 WORKDIR /home/admin/app
@@ -22,8 +21,17 @@ RUN chown -R admin:admin /home/admin/app
 
 USER admin
 
-RUN id && \
-    gem install bundler && \
+RUN gem install bundler && \
     bundle update rack-test && \
-    bundle install && \
-    echo "Container Done!"
+    bundle install
+
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
+    curl -L https://get.rvm.io | /bin/bash -s stable && \
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && \
+    export PATH="$PATH:$HOME/.rvm/bin"; . $HOME/.bashrc; rvm install "ruby-2.3.3" --default; export && \
+    export GEM_PATH="/home/admin/.rvm/gems/ruby-2.3.3@ci:/home/admin/.rvm/gems/ruby-2.3.3@global" && \
+    rvm gemset create ci; rvm use ruby-2.3.3@ci; cd $APP_HOME; id; gem install bundler && \
+    bundle update rack-test; bundle install
+
+    #export PATH="/home/admin/.rvm/gems/ruby-2.3.3@ci/bin:/home/admin/.rvm/gems/ruby-2.3.3@global/bin:/home/admin/.rvm/rubies/ruby-2.3.3/bin:/home/admin/.rvm/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" && \
+RUN echo $GEM_HOME
