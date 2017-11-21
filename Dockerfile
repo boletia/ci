@@ -12,7 +12,8 @@ ENV APP_HOME /home/admin/app
 #Admin user for operations tasks
 RUN groupadd admin && \
     useradd -ms /bin/bash admin -g admin && \
-    mkdir -p $APP_HOME
+    mkdir -p $APP_HOME && \
+    rm -rf /usr/local/bundle/cache
 
 # Declare the env vars for the working path
 WORKDIR /home/admin/app
@@ -21,5 +22,6 @@ RUN chown -R admin:admin /home/admin/app
 
 USER admin
 
-RUN gem install bundler && \
+RUN id
+    gem install bundler && \
     echo "Container Done!"
