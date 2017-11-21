@@ -2,7 +2,8 @@ pipeline {
     agent { dockerfile true }
     stages {
         stage('Build'){
-            steps {
+            steps {   
+                sh 'whoami'
                 sh 'bundle update rack-test && bundle install'
             }
         }
