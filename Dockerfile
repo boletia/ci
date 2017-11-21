@@ -6,19 +6,24 @@ RUN apt-get update -qq
 RUN apt-get install -y curl gnupg build-essential gawk sqlite3 libgmp-dev libgdbm-dev bison libgmp-dev
 
 
-#Admin user for operations tasks
-RUN useradd -m -s /bin/bash admin
-USER admin
-WORKDIR /home/admin
-
-# Declare the env vars for the working path
 ENV APP_HOME /home/admin/app
 
-ADD . $APP_HOME/
+#Admin user for operations tasks
+RUN groupadd admin && \
+    useradd -ms /bin/bash admin -g admin && \
+    mkdir -p $APP_HOME
 
-RUN mkdir -p $APP_HOME && \
-    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
+# Declare the env vars for the working path
+WORKDIR /home/admin/app
+ADD . $APP_HOME/
+RUN chown -R admin:admin /home/admin/app
+
+USER admin
+
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
     curl -L https://get.rvm.io | /bin/bash -s stable && \
-    . /home/admin/.rvm/scripts/rvm
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && \
+    $HOME/.rvm/bin/rvm install ruby-2.3.3 && cd $APP_HOME && $HOME/.rvm/bin/rvm gemset list && gem install bundler && \
+    bundle update rack-test && bundle install
 
 
