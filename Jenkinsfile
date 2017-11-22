@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-                sh 'docker run -tiu admin ci rspec spec'
+                sh 'docker run -u admin ci rspec spec'
             }
         }
         stage('Deploy') {
