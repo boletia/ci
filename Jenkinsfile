@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'poc-jenkins-docker'
+        }
+    }
+
     stages {
         stage('Build Docker Container'){
             steps {   
