@@ -1,15 +1,19 @@
 pipeline {
-    agent any 
+    agent {
+        any {
+            label 'poc-jenkins-docker'
+        }
+    }
 
     stages {
-        stage('Build') { 
-            steps { 
-                sh 'echo "Build"' 
+        stage('Build Docker Container'){
+            steps {   
+                sh 'docker build -t ci .'
             }
         }
         stage('Test'){
             steps {
-                sh 'echo "Test"'
+                sh 'docker run -u admin ci rspec spec'
             }
         }
         stage('Deploy') {
@@ -18,4 +22,5 @@ pipeline {
             }
         }
     }
+
 }
