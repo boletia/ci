@@ -8,10 +8,7 @@ pipeline {
     stages {
         stage('Build Docker Container'){
             steps {   
-                sh '''
-                   docker build -t ci .
-                   docker run -u admin ci bundle update rack-test
-                '''
+                sh 'docker build -t ci .'
             }
         }
         stage('Test'){

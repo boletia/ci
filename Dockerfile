@@ -26,6 +26,7 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && \
     export PATH="$PATH:$HOME/.rvm/bin"; . $HOME/.bashrc && \
     export GEM_PATH="/home/admin/.rvm/gems/ruby-2.3.3@ci:/home/admin/.rvm/gems/ruby-2.3.3@global" && \
-    rvm gemset create ci; rvm use ruby-2.3.3@ci; cd $APP_HOME; id; gem install bundler
+    rvm gemset create ci; rvm use ruby-2.3.3@ci; cd $APP_HOME; id; gem install bundler && \
+    bundle update rack-test; bundle install
 
 RUN echo "Build done!"
