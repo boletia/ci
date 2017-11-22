@@ -4,7 +4,6 @@ pipeline {
         stage('Build Docker Container'){
             steps {   
                 sh 'docker build -t ci .'
-                sh 'docker run -tiu admin ci bash'
             }
         }
         stage('Test'){
