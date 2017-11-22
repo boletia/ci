@@ -10,7 +10,7 @@ pipeline {
             steps {   
                 sh '''
                    docker build -t ci .
-                   docker run -u admin ci bundle update rack-test && bundle install
+                   docker run -u admin ci bundle update rack-test
                 '''
             }
         }
