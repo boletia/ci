@@ -1,15 +1,15 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
     stages {
-        stage('Build'){
+        stage('Build Docker Container'){
             steps {   
-                sh 'su - admin'
-                sh 'bundle update rack-test && bundle install'
+                sh 'docker build -t ci .'
+                sh 'docker run -tiu admin ci bash'
             }
         }
         stage('Test'){
             steps {
-                sh 'rspec spec'
+                sh 'docker run -tiu admin ci rspec spec'
             }
         }
         stage('Deploy') {
